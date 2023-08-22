@@ -1,6 +1,7 @@
 package srttotext
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -25,4 +26,23 @@ of what goes on our plate and what stays off.
 	observed := Convert(srtContent)
 
 	assert.Equal(t, expected, observed)
+}
+
+func ExampleConvert() {
+	// Sample SRT content
+	input := `
+1
+00:00:01,000 --> 00:00:04,000
+Hello, world!
+
+2
+00:00:05,000 --> 00:00:08,000
+This is a test.
+`
+
+	output := Convert(input)
+	fmt.Println(output)
+
+	// Output:
+	// Hello, world! This is a test.
 }
